@@ -1,0 +1,18 @@
+.headerContainer{
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  background-color: lightgray;
+  .header_item{
+    margin:0 0.8rem;
+    a:link,a:visited{
+      color:black;
+      text-decoration: none;
+    }
+    a:active,a:hover{
+      color:grey;
+      text-decoration: none;
+      
+    }
+  }
+}
