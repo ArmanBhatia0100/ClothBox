@@ -15,7 +15,7 @@ export default function Card() {
         <span className="cardText-title">Price:</span>$1.99
       </p>
       <div>
-        <span className="cardText-title">Qty</span>
+        <label htmlFor="">Qty</label>
         <input
           className="cardText-qty"
           type="number"
@@ -23,7 +23,7 @@ export default function Card() {
           min="0"
           defaultValue="0"
         />
-        <button>Add to Cart</button>
+        <button className="addToCartBtn" type="button">Add to Cart</button>
       </div>
     </div>
   );

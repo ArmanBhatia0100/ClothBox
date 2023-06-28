@@ -1,0 +1,11 @@
+.modal {
+  border: 1px solid black;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  .cartItems_container {
+    border-right: 4px solid black;
+    width: 70%;
+    max-width: 70vw;
+  }
+}

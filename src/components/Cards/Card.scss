@@ -1,0 +1,18 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 10rem;
+
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  justify-content: space-around;
+  .cardText-qty {
+    width: 4rem;
+    max-width: max-content;
+  }
+  .addToCartBtn {
+    cursor: pointer;
+  }
+}

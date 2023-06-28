@@ -124,8 +124,9 @@ table {
 }
 * {
   box-sizing: border-box;
+}
+body {
   overflow-x: hidden;
-  overflow-y: auto;
 }
 .App {
   font-family: sans-serif;
