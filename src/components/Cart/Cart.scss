@@ -1,11 +1,36 @@
 .modal {
+  text-align: left;
   border: 1px solid black;
   background: white;
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
   .cartItems_container {
-    border-right: 4px solid black;
+    border-right: 2px solid black;
     width: 70%;
     max-width: 70vw;
+    padding: 2rem;
+    .cartItem_card {
+      margin: 1rem 0;
+      padding: 2rem;
+      border: 1px solid black;
+    }
+  }
+  .cartContractor_container {
+    padding: 2rem;
+    input[type="search"] {
+      margin-top: 1rem;
+    }
+    .contractor_card {
+      border: 1px solid black;
+      padding: 0.5rem;
+      justify-content: space-evenly;
+      display: flex;
+      margin: 1rem 0;
+      border-radius: 0.3rem;
+      button {
+        cursor: pointer;
+      }
+    }
   }
 }

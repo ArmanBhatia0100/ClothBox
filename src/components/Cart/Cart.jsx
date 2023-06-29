@@ -10,7 +10,14 @@ export default function Cart() {
       <Header />
       <div className="modal">
         <div className="cartItems_container">
-          <div>
+          <h1 style={{ textAlign: "left" }}>Cart Item</h1>
+          <div className="cartItem_card">
+            <p>Name: Item1</p>
+            <p>price:1.99</p>
+            <p>Qty:3</p>
+          </div>
+
+          <div className="cartItem_card">
             <p>Name: Item1</p>
             <p>price:1.99</p>
             <p>Qty:3</p>
