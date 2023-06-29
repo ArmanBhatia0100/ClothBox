@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./Auth.scss";
 import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../store/AuthSlice";
 
 const owner = {
   name: "Arman",
@@ -22,9 +23,9 @@ export default function Auth() {
     const password = passwordRef.current.value;
 
     if (username === owner.name && password === owner.password) {
-      alert("login");
+      dispatch(login());
     } else {
-      alert("email or password incorrect");
+      alert("email or password incorrect try again");
     }
     usernameRef.current.value = passwordRef.current.value = "";
   };
