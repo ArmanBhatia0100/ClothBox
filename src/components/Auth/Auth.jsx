@@ -1,13 +1,18 @@
-import React, { useRef } from 'react';
-import './Auth.scss';
+import React, { useRef } from "react";
+import "./Auth.scss";
+import { useSelector, useDispatch } from "react-redux";
 
 const owner = {
-  name: 'Arman',
-  role: 'admin',
-  password: 'admin@123'
+  name: "Arman",
+  role: "admin",
+  password: "admin@123",
 };
 
 export default function Auth() {
+  const authState = useSelector((state) => state.authentication.isLoggedIn);
+  const dispatch = useDispatch();
+
+  console.log(authState);
   const usernameRef = useRef();
   const passwordRef = useRef();
 
@@ -17,11 +22,11 @@ export default function Auth() {
     const password = passwordRef.current.value;
 
     if (username === owner.name && password === owner.password) {
-      alert('login');
+      alert("login");
     } else {
-      alert('email or password incorrect');
+      alert("email or password incorrect");
     }
-    usernameRef.current.value = passwordRef.current.value = '';
+    usernameRef.current.value = passwordRef.current.value = "";
   };
   return (
     <div className="authContainer">
