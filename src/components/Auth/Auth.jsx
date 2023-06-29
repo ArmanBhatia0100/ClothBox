@@ -10,10 +10,8 @@ const owner = {
 };
 
 export default function Auth() {
-  const authState = useSelector((state) => state.authentication.isLoggedIn);
   const dispatch = useDispatch();
 
-  console.log(authState);
   const usernameRef = useRef();
   const passwordRef = useRef();
 
@@ -24,6 +22,7 @@ export default function Auth() {
 
     if (username === owner.name && password === owner.password) {
       dispatch(login());
+      window.localStorage.setItem("loggedIn", true);
     } else {
       alert("email or password incorrect try again");
     }

@@ -5,11 +5,13 @@ import "./styles.css";
 import { useSelector } from "react-redux";
 
 export default function App() {
+  const isAlreadyLoggedIn = window.localStorage.getItem("loggedIn");
   const isLoggedIn = useSelector((state) => state.authentication.isLoggedIn);
+
+  console.log("reevaluated", isAlreadyLoggedIn, isLoggedIn);
   return (
     <div className="App">
-      {!isLoggedIn ? <Auth /> : <Home />}
-
+      {isAlreadyLoggedIn && isLoggedIn ? <Home /> : <Auth />}
       {/* <Cart /> */}
     </div>
   );
