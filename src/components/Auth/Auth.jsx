@@ -11,7 +11,7 @@ const owner = {
 
 export default function Auth() {
   const dispatch = useDispatch();
-
+  
   const usernameRef = useRef();
   const passwordRef = useRef();
 
@@ -25,6 +25,7 @@ export default function Auth() {
       window.localStorage.setItem("loggedIn", true);
     } else {
       alert("email or password incorrect try again");
+      window.localStorage.setItem("loggedIn", false);
     }
     usernameRef.current.value = passwordRef.current.value = "";
   };

@@ -19,7 +19,6 @@ export default function Header() {
         <button
           type="button"
           onClick={() => {
-            window.localStorage.removeItem("loggedIn");
             window.localStorage.setItem("loggedIn", false);
             dispatch(logout());
           }}
