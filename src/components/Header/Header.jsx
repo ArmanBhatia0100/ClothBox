@@ -1,19 +1,20 @@
 import "./Header.scss";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/AuthSlice";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const dispatch = useDispatch();
   return (
     <header className="headerContainer">
       <div className="header_item">
-        <a href="#">Home</a>
+        <Link to="/">Home</Link>
       </div>
       <div className="header_item">
-        <a href="#">Contractors</a>
+        <Link to="#">Contractors</Link>
       </div>
       <div className="header_item">
-        <a href="#">Cart</a>
+        <Link to="/cart">Cart</Link>
       </div>
       <div className="header_item">
         <button

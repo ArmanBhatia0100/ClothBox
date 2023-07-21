@@ -1,6 +1,10 @@
 import "./Card.scss";
+import { addTocart, removeFromCart } from "../../store/CartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Card() {
+export default function Card({ id, name, price, qty }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="card-container">
       <img
@@ -9,10 +13,11 @@ export default function Card() {
         alt=""
       />
       <p className="cardtext">
-        <span className="cardText-title">Name:</span>Item1
+        <span className="cardText-title">Name: </span>
+        {name}
       </p>
       <p className="cardtext">
-        <span className="cardText-title">Price:</span>$1.99
+        <span className="cardText-title">Price: </span>${price}
       </p>
       <div>
         <label htmlFor="">Qty</label>
@@ -21,9 +26,15 @@ export default function Card() {
           type="number"
           step="1"
           min="0"
-          defaultValue="0"
+          defaultValue={qty}
         />
-        <button className="addToCartBtn" type="button">Add to Cart</button>
+        <button
+          className="addToCartBtn"
+          type="button"
+          onClick={() => dispatch(addTocart())}
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );
