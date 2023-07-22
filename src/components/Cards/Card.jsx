@@ -1,9 +1,11 @@
 import "./Card.scss";
+import { useRef } from "react";
 import { addTocart, removeFromCart } from "../../store/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Card({ id, name, price, qty }) {
   const dispatch = useDispatch();
+  const qtyRef = useRef();
 
   return (
     <div className="card-container">
@@ -23,6 +25,7 @@ export default function Card({ id, name, price, qty }) {
         <label htmlFor="">Qty</label>
         <input
           className="cardText-qty"
+          ref={qtyRef}
           type="number"
           step="1"
           min="0"
@@ -31,7 +34,9 @@ export default function Card({ id, name, price, qty }) {
         <button
           className="addToCartBtn"
           type="button"
-          onClick={() => dispatch(addTocart())}
+          onClick={() => {
+            console.log(price, Number(qtyRef.current.value), name);
+          }}
         >
           Add to Cart
         </button>
