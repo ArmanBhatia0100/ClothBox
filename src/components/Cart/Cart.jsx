@@ -3,18 +3,21 @@ import React from "react";
 import Card from "../Cards/Card";
 import "./Cart.scss";
 import Header from "../Header/Header";
-import { UseSelector, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { assignItems } from "../../store/ContractorSlice";
+
+import { removeFromCart } from "../../store/CartSlice";
 
 export default function Cart() {
   const cartItems = useSelector((state) => state.cartItems);
-
+  const dispatch = useDispatch();
   return (
     <React.Fragment>
       <Header />
       <div className="modal">
         <div className="cartItems_container">
           <h1 style={{ textAlign: "left" }}>Cart Item</h1>
-          {cartItems.map((item, index) => {
+          {cartItems.items.map((item, index) => {
             return (
               <CartCard
                 key={index}
@@ -33,7 +36,17 @@ export default function Cart() {
           <div className="contractorsList">
             <div className="contractor_card">
               <h2>Arman</h2>
-              <button type="button">Assign</button>
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(
+                    assignItems({ name: "arman", itemsInCart: cartItems })
+                  );
+                  dispatch(removeFromCart());
+                }}
+              >
+                Assign
+              </button>
             </div>
             <div className="contractor_card">
               <h2>Arman</h2>
