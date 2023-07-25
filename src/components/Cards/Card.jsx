@@ -35,7 +35,10 @@ export default function Card({ id, name, price, qty }) {
           className="addToCartBtn"
           type="button"
           onClick={() => {
-            console.log(price, Number(qtyRef.current.value), name);
+            dispatch(
+              addTocart({ item: { name, price, qty: qtyRef.current.value } })
+            );
+            qtyRef.current.value = 0;
           }}
         >
           Add to Cart

@@ -6,8 +6,9 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addTocart() {
-      console.log("Added to the cart");
+    addTocart(state, payload) {
+      return { ...state };
+      console.log(state);
     },
     removeFromCart() {
       console.log("Removed from the cart");
