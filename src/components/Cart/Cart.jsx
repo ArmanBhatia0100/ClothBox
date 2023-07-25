@@ -6,17 +6,24 @@ import Header from "../Header/Header";
 import { UseSelector, useSelector } from "react-redux";
 
 export default function Cart() {
-  const cartItemList = useSelector((state) => state.cartItems);
+  const cartItems = useSelector((state) => state.cartItems);
 
-  console.log(cartItemList);
   return (
     <React.Fragment>
       <Header />
       <div className="modal">
         <div className="cartItems_container">
           <h1 style={{ textAlign: "left" }}>Cart Item</h1>
-          <CartCard />
-          <CartCard />
+          {cartItems.map((item, index) => {
+            return (
+              <CartCard
+                key={index}
+                name={item.name}
+                qty={item.qty}
+                price={item.price}
+              />
+            );
+          })}
         </div>
         <div className="cartContractor_container">
           <div className="search_container">
@@ -43,12 +50,12 @@ export default function Cart() {
   );
 }
 
-const CartCard = () => {
+const CartCard = ({ name, price, qty }) => {
   return (
     <div className="cartItem_card">
-      <p>Name: Item1</p>
-      <p>price:1.99</p>
-      <p>Qty:3</p>
+      <p>Name: {name}</p>
+      <p>price: ${price}</p>
+      <p>Qty: {qty}</p>
     </div>
   );
 };

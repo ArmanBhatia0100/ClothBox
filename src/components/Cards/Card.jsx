@@ -35,9 +35,7 @@ export default function Card({ id, name, price, qty }) {
           className="addToCartBtn"
           type="button"
           onClick={() => {
-            dispatch(
-              addTocart({ item: { name, price, qty: qtyRef.current.value } })
-            );
+            dispatch(addTocart({ name, price, qty: qtyRef.current.value }));
             qtyRef.current.value = 0;
           }}
         >
