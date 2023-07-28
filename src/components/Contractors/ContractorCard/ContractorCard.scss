@@ -1,0 +1,26 @@
+.contractorCard_container {
+  box-sizing: border-box;
+  border: 1px solid black;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  width: 50rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .contractorInfo,
+  .contratorActionBtnContainer {
+    padding: 0 2rem;
+  }
+  .contratorActionBtnContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+      width: 10rem;
+      padding: 0.2rem 0;
+      margin: 0.4rem 0;
+      cursor: pointer;
+    }
+  }
+}

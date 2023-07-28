@@ -11,7 +11,7 @@ export default function Header() {
         <Link to="/">Home</Link>
       </div>
       <div className="header_item">
-        <Link to="#">Contractors</Link>
+        <Link to="/contractor">Contractors</Link>
       </div>
       <div className="header_item">
         <Link to="/cart">Cart</Link>

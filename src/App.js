@@ -5,6 +5,7 @@ import "./styles.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import Contractor from "./components/Contractors/Contractor";
 
 export default function App() {
   const [isAlreadyLoggedIn, setIsAlreadyLoggedIn] = useState("false");
@@ -24,6 +25,7 @@ export default function App() {
           element={isAlreadyLoggedIn && isLoggedIn ? <Home /> : <Auth />}
         />
         <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/contractor" element={<Contractor />} />
         {/* <Cart /> */}
       </Routes>
     </div>

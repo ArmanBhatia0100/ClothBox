@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const contractorSlice = createSlice({
   name: "contractor",
-  initialState: [],
+  initialState: {
+    assignItems: [],
+  },
   reducers: {
     assignItems(state, action) {
-      state.push(action.payload);
+      state.assignItems.push(action.payload);
     },
   },
 });
