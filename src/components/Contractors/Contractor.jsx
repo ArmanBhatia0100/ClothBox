@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 
 export default function Contractor() {
   const contractorsList = useSelector((state) => state.contractors.assignItems);
-  console.log(contractorsList.length);
+  console.log("This is contractor list", contractorsList);
+
   return (
     <div className="contractor">
       <Header></Header>
