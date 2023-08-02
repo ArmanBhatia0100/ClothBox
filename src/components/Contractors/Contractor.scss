@@ -1,4 +1,8 @@
 .contractor-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  .contractorCard_container {
+    margin: auto;
+  }
 }
