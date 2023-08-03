@@ -40,7 +40,24 @@ export default function Cart() {
                 type="button"
                 onClick={() => {
                   dispatch(
-                    assignItems({ name: "arman", itemsInCart: cartItems })
+                    assignItems({ name: "Arman", itemsInCart: cartItems.items })
+                  );
+                  dispatch(removeFromCart());
+                }}
+              >
+                Assign
+              </button>
+            </div>
+            <div className="contractor_card">
+              <h2>Tanish</h2>
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(
+                    assignItems({
+                      name: "Tanish",
+                      itemsInCart: cartItems.items,
+                    })
                   );
                   dispatch(removeFromCart());
                 }}
@@ -50,11 +67,17 @@ export default function Cart() {
             </div>
             <div className="contractor_card">
               <h2>Arman</h2>
-              <button type="button">Assign</button>
-            </div>
-            <div className="contractor_card">
-              <h2>Arman</h2>
-              <button type="button">Assign</button>
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(
+                    assignItems({ name: "Karan", itemsInCart: cartItems.items })
+                  );
+                  dispatch(removeFromCart());
+                }}
+              >
+                Assign
+              </button>
             </div>
           </div>
         </div>
