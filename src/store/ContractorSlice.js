@@ -23,13 +23,6 @@ const contractorSlice = createSlice({
         state.test.push(indexFound);
       }
     },
-    // state.assignItems.forEach(function (item, index) {
-    //   if (item.name === action.payload.name) {
-    //     state.assignItems[index].itemsInCart.push(action.payload.itemsInCart);
-    //   }
-    // });
-
-    // state.assignItems.push(action.payload);
   },
 });
 
