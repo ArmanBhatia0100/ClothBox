@@ -1,18 +1,82 @@
-.card-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 10rem;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+// Variables
+$regal-blue: #034378;
+$san-juan: #2d4e68;
+$bermuda: #77d7b9;
+$white: #fff;
+$black: #000;
+$open-sans: "Open Sans", sans-serif;
+// clear-fix mixin
 
-  padding: 1rem;
-  margin: 1rem;
-  border: 1px solid black;
-  border-radius: 5px;
-  justify-content: space-around;
-  .cardText-qty {
-    width: 4rem;
-    max-width: max-content;
+.card {
+  padding: 0 1.7rem;
+  width: 25%;
+  margin: 1.3rem 0;
+}
+.wrapper {
+  background-color: $white;
+  min-height: 540px;
+  position: relative;
+  box-shadow: 0 19px 38px rgba($black, 0.3), 0 15px 12px rgba($black, 0.2);
+}
+.data {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  .content {
+    padding: 0.5em;
+    position: relative;
+    z-index: 1;
   }
-  .addToCartBtn {
-    cursor: pointer;
+}
+.author {
+  font-size: 2rem;
+}
+.title {
+  margin-top: 10px;
+}
+.text {
+  margin: 0;
+  height: 1.5rem;
+}
+
+// First example styles
+.example-1 {
+  .wrapper {
+    background: url(https://images.unsplash.com/photo-1496979551903-46e46589a88b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cda12b505afa1beb06e49d89014cbd65&auto=format&fit=crop&w=634&q=80)
+      20% 1% / cover no-repeat;
+  }
+  .date {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $bermuda;
+    color: $white;
+    padding: 0.8em;
+    span {
+      display: block;
+      text-align: center;
+    }
+    .day {
+      font-weight: 700;
+      font-size: 24px;
+      text-shadow: 2px 3px 2px rgba($black, 0.18);
+    }
+    .month {
+      text-transform: uppercase;
+    }
+    .month,
+    .year {
+      font-size: 12px;
+    }
+  }
+  .content {
+    background-color: $white;
+    box-shadow: 0 5px 30px 10px rgba($black, 0.3);
+  }
+  .title {
+    a {
+      color: lighten($black, 50%);
+    }
   }
 }

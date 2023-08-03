@@ -6,18 +6,22 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const dispatch = useDispatch();
   return (
-    <header className="headerContainer">
-      <div className="header_item">
-        <Link to="/">Home</Link>
+    <div className="nav">
+      <div className="nav-header">
+        <div class="nav-title">ClothSHoop</div>
       </div>
-      <div className="header_item">
-        <Link to="/contractor">Contractors</Link>
-      </div>
-      <div className="header_item">
-        <Link to="/cart">Cart</Link>
-      </div>
-      <div className="header_item">
+      <div className="nav-links">
+        <Link className="nav-link" to="/">
+          Home
+        </Link>
+        <Link className="nav-link" to="/contractor">
+          Contractor
+        </Link>
+        <Link className="nav-link" to="/cart">
+          Cart
+        </Link>
         <button
+          className="close btn-logout"
           type="button"
           onClick={() => {
             window.localStorage.setItem("loggedIn", false);
@@ -27,6 +31,6 @@ export default function Header() {
           Logout
         </button>
       </div>
-    </header>
+    </div>
   );
 }
