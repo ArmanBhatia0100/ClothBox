@@ -6,3 +6,12 @@
     margin: auto;
   }
 }
+.contractor_subMenu {
+  display: flex;
+  padding: 0.6rem;
+  margin-bottom: 2rem;
+  background-color: rgb(198, 234, 234);
+  .addContractorBtn {
+    text-align: left;
+  }
+}
