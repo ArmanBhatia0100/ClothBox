@@ -16,7 +16,6 @@ export default function Cart() {
       <Header />
       <div className="modal">
         <div className="cartItems_container">
-          <h1 style={{ textAlign: "left" }}>Cart Item</h1>
           {cartItems.items.map((item, index) => {
             return (
               <CartCard
@@ -88,10 +87,16 @@ export default function Cart() {
 
 const CartCard = ({ name, price, qty }) => {
   return (
-    <div className="cartItem_card">
-      <p>Name: {name}</p>
-      <p>price: ${price}</p>
-      <p>Qty: {qty}</p>
+    <div class="example-1 card" style={{ width: "40%" }}>
+      <div class="wrapper">
+        <div class="data">
+          <div class="content">
+            <span class="author ItemName"> {name}</span>
+            <p class="text">Price : ${price}</p>
+            <p class="text">Qty : {qty}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
