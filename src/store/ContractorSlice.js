@@ -4,7 +4,7 @@ const contractorSlice = createSlice({
   name: "contractor",
   initialState: {
     assignItems: [],
-    test: [],
+    contractorsList: [],
   },
   reducers: {
     assignItems(state, action) {
@@ -14,17 +14,18 @@ const contractorSlice = createSlice({
 
       // Index found
       if (indexFound >= 0) {
-        state.test.push(indexFound);
         state.assignItems[indexFound].itemsInCart.push(
           ...action.payload.itemsInCart
         );
       } else {
         state.assignItems.push(action.payload);
-        state.test.push(indexFound);
       }
+    },
+    addContractor(state, action) {
+      state.contractorsList.push(action.payload);
     },
   },
 });
 
-export const { assignItems } = contractorSlice.actions;
+export const { assignItems, addContractor } = contractorSlice.actions;
 export default contractorSlice.reducer;

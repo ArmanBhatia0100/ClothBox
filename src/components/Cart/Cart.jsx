@@ -1,6 +1,5 @@
 import React from "react";
 
-import Card from "../Cards/Card";
 import "./Cart.scss";
 import Header from "../Header/Header";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +9,10 @@ import { removeFromCart } from "../../store/CartSlice";
 
 export default function Cart() {
   const cartItems = useSelector((state) => state.cartItems);
+  const contractorsList = useSelector(
+    (state) => state.contractors.contractorsList
+  );
+
   const dispatch = useDispatch();
   return (
     <React.Fragment>
@@ -33,51 +36,27 @@ export default function Cart() {
             <input type="search" />
           </div>
           <div className="contractorsList">
-            <div className="contractor_card">
-              <h2>Arman</h2>
-              <button
-                type="button"
-                onClick={() => {
-                  dispatch(
-                    assignItems({ name: "Arman", itemsInCart: cartItems.items })
-                  );
-                  dispatch(removeFromCart());
-                }}
-              >
-                Assign
-              </button>
-            </div>
-            <div className="contractor_card">
-              <h2>Tanish</h2>
-              <button
-                type="button"
-                onClick={() => {
-                  dispatch(
-                    assignItems({
-                      name: "Tanish",
-                      itemsInCart: cartItems.items,
-                    })
-                  );
-                  dispatch(removeFromCart());
-                }}
-              >
-                Assign
-              </button>
-            </div>
-            <div className="contractor_card">
-              <h2>Arman</h2>
-              <button
-                type="button"
-                onClick={() => {
-                  dispatch(
-                    assignItems({ name: "Karan", itemsInCart: cartItems.items })
-                  );
-                  dispatch(removeFromCart());
-                }}
-              >
-                Assign
-              </button>
-            </div>
+            {contractorsList.map(function (contractor) {
+              return (
+                <div className="contractor_card">
+                  <h2>Arman</h2>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispatch(
+                        assignItems({
+                          name: "Arman",
+                          itemsInCart: cartItems.items,
+                        })
+                      );
+                      dispatch(removeFromCart());
+                    }}
+                  >
+                    Assign
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
