@@ -13,18 +13,19 @@ export default function ContractsBanner() {
   const messageRef = useRef(null);
 
   const dispatch = useDispatch();
-  const contractorList = useSelector(
-    (state) => state.contractors.constractorsList
-  );
+  const contractorList = useSelector((state) => {
+    console.log("triggered");
+    return state.contractors.constractorsList;
+  });
 
   const addContractorHandler = (e) => {
     e.preventDefault();
     dispatch(
       addContractor({
         name: nameRef.current.value,
-        Phone: phoneNumberRef.current.value,
-        ReferedBy: referedByRef.current.value,
-        Address: homeAddressRef.current.value,
+        phone: phoneNumberRef.current.value,
+        referedBy: referedByRef.current.value,
+        address: homeAddressRef.current.value,
         message: messageRef.current.value,
       })
     );

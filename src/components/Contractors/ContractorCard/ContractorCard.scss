@@ -1,26 +1,75 @@
 .contractorCard_container {
-  box-sizing: border-box;
-  border: 1px solid black;
-  margin: 0.5rem 0;
-  padding: 1rem;
-  width: 50rem;
-  height: 5rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  .contractorInfo,
-  .contratorActionBtnContainer {
-    padding: 0 2rem;
-  }
-  .contratorActionBtnContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  min-height: 84vh;
+  .contractor_overview--container {
+    min-width: 50%;
+    padding: 0.5rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    button {
-      width: 10rem;
-      padding: 0.2rem 0;
-      margin: 0.4rem 0;
-      cursor: pointer;
+    flex-direction: column;
+    .contractor_overview--card {
+      width: 80%;
+      padding: 0.5rem;
+      border: 1px solid black;
+      border-radius: 5px;
+      .contratorActionBtnContainer {
+        display: flex;
+        flex-direction: row;
+        padding-top: 0.3rem;
+        button {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .contractor_details--container {
+    background-color: rgb(255, 250, 244);
+    min-width: 50%;
+    .profile_info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .profile_photo {
+        img {
+          width: 7rem;
+          height: 7rem;
+        }
+      }
+      .profile_details {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 1rem;
+        .section-left {
+          div {
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem;
+          }
+          .profile_lable {
+            font-weight: 600;
+          }
+        }
+        .section-left,
+        .section-right {
+          width: 50%;
+          text-align: left;
+        }
+        .section-right {
+          padding: 0.5rem;
+          .profile_lable {
+            font-weight: 600;
+          }
+          .profile_del--btn {
+            padding: 0.3rem;
+            margin: 1rem 0;
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
 }

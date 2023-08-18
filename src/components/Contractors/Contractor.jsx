@@ -5,12 +5,15 @@ import { useState } from "react";
 import "./Contractor.scss";
 import { useSelector } from "react-redux";
 
+//
 export default function Contractor() {
   const [addContractor, setAddContractor] = useState(false);
   const contractorsList = useSelector((state) => state.contractors.assignItems);
   return (
     <div className="contractor">
       <Header></Header>
+
+      {/* Add Contractor button */}
       <div className="contractor_subMenu">
         <button
           className="addContractorBtn"
@@ -21,17 +24,12 @@ export default function Contractor() {
         </button>
       </div>
 
+      {/* Contractor Banner */}
       {addContractor ? (
-        <ContractsBanner />
+        <ContractsBanner /> // ! This is the form to add contractor
       ) : (
         <section className="contractor-container">
-          {contractorsList.length > 0
-            ? contractorsList.map((contractor) => {
-                return (
-                  <ContractorCard contractor={contractor}></ContractorCard>
-                );
-              })
-            : null}
+          <ContractorCard contractorsList={contractorsList}></ContractorCard>
         </section>
       )}
     </div>

@@ -39,13 +39,13 @@ export default function Cart() {
             {contractorsList.map(function (contractor) {
               return (
                 <div className="contractor_card">
-                  <h2>Arman</h2>
+                  <h2>{contractor.name}</h2>
                   <button
                     type="button"
                     onClick={() => {
                       dispatch(
                         assignItems({
-                          name: "Arman",
+                          name: contractor.name,
                           itemsInCart: cartItems.items,
                         })
                       );

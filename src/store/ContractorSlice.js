@@ -3,8 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const contractorSlice = createSlice({
   name: "contractor",
   initialState: {
-    assignItems: [],
-    contractorsList: [],
+    assignItems: [{ name: "Armantest", itemsInCart: 5 }],
+    contractorsList: [
+      {
+        name: "Arman Bhatia",
+        phone: 5144485939,
+        referedBy: "Happy",
+        address: "ABC road",
+        message: "Hardworker and honest",
+      },
+    ],
   },
   reducers: {
     assignItems(state, action) {
