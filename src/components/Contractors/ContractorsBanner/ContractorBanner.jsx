@@ -14,7 +14,6 @@ export default function ContractsBanner() {
 
   const dispatch = useDispatch();
   const contractorList = useSelector((state) => {
-    console.log("triggered");
     return state.contractors.constractorsList;
   });
 
@@ -22,6 +21,9 @@ export default function ContractsBanner() {
     e.preventDefault();
     dispatch(
       addContractor({
+        id:
+          nameRef.current.value.substr(0, 2) +
+          phoneNumberRef.current.value.substr(8, 3),
         name: nameRef.current.value,
         phone: phoneNumberRef.current.value,
         referedBy: referedByRef.current.value,
@@ -36,7 +38,6 @@ export default function ContractsBanner() {
       messageRef.current.value =
         "";
   };
-  console.log(contractorList);
   return (
     <div class="contractorFormcontainer">
       <form id="contact" onSubmit={addContractorHandler}>

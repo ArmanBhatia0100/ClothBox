@@ -36,16 +36,21 @@ export default function Cart() {
             <input type="search" />
           </div>
           <div className="contractorsList">
-            {contractorsList.map(function (contractor) {
+            {contractorsList.map(function (contractor, index) {
               return (
-                <div className="contractor_card">
+                <div key={index} className="contractor_card">
                   <h2>{contractor.name}</h2>
                   <button
                     type="button"
                     onClick={() => {
                       dispatch(
                         assignItems({
+                          id: contractor.id,
                           name: contractor.name,
+                          phone: contractor.phone,
+                          address: contractor.address,
+                          referedby: contractor.referedBy,
+                          message: contractor.message,
                           itemsInCart: cartItems.items,
                         })
                       );
