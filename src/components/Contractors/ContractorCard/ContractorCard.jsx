@@ -82,7 +82,7 @@ const ContractorDetails = () => {
               </div>
               <div>
                 <span className="profile_lable">Message: </span>
-                <span>{contractorsDetails.message}</span>
+                <div>{contractorsDetails.message}</div>
               </div>
             </div>
             <div className="section-right">

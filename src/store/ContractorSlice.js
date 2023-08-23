@@ -65,6 +65,17 @@ const contractorSlice = createSlice({
         (obj) => obj.id == action.payload
       );
       state.assignItems.splice(indexToDeleteAssignedItems, 1);
+
+      // Delete the details cards and add the default.
+
+      state.contractorDetails = {
+        id: "xxx",
+        name: "xxx",
+        phone: 123,
+        referedBy: "xxx",
+        address: "xxx",
+        message: "xxx",
+      };
     },
 
     findContractorDetails(state, action) {

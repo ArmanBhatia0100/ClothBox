@@ -31,7 +31,7 @@
       top: 1rem;
       margin-top: 1rem;
       background-color: rgb(255, 250, 244);
-      min-width: 50%;
+      width: 500px;
       .profile_info {
         display: flex;
         flex-direction: column;
@@ -50,7 +50,7 @@
           padding: 1rem;
           .section-left {
             div {
-              width: 100%;
+              width: 12rem;
               text-align: left;
               padding: 0.5rem;
             }
@@ -60,7 +60,6 @@
           }
           .section-left,
           .section-right {
-            width: 50%;
             text-align: left;
           }
           .section-right {
