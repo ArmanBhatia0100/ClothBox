@@ -11,7 +11,23 @@ const contractorSlice = createSlice({
         referedBy: "Happy",
         address: "ABC road",
         message: "Hardworker and honest",
-        itemsInCart: [5],
+        itemsInCart: [
+          {
+            name: "Item0",
+            price: 50,
+            qty: "4",
+          },
+          {
+            name: "Item1",
+            price: 50,
+            qty: "5",
+          },
+          {
+            name: "Item0",
+            price: 50,
+            qty: "4",
+          },
+        ],
       },
     ],
     contractorsList: [
@@ -79,7 +95,7 @@ const contractorSlice = createSlice({
     },
 
     findContractorDetails(state, action) {
-      const foundContractor = state.contractorsList.find(
+      const foundContractor = state.assignItems.find(
         (contractor) => contractor.id == action.payload
       );
       state.contractorDetails = { ...foundContractor };

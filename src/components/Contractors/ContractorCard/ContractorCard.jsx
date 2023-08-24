@@ -4,18 +4,31 @@ import {
   deleteContractor,
 } from "../../../store/ContractorSlice";
 import "./ContractorCard.scss";
+import { useState } from "react";
 
 export default function ContractorCard({ contractorsList }) {
+  const [showList, setShowList] = useState(false);
+  const getTheshowlistHandler = (value) => {
+    setShowList(() => value);
+  };
+
   return (
     <div className="contractorCard_container">
       {/* This Containes the contractor's cards */}
-      <ContractorOverview contractorsAssignmentList={contractorsList} />
-      <ContractorDetails />
+      <ContractorOverview
+        showListCardHandler={getTheshowlistHandler}
+        contractorsAssignmentList={contractorsList}
+      />
+      <ContractorDetails showItemsList={showList} />
     </div>
   );
 }
 
-const ContractorOverview = ({ contractorsAssignmentList }) => {
+// ! This is the overview card on the left side.
+const ContractorOverview = ({
+  showListCardHandler,
+  contractorsAssignmentList,
+}) => {
   const dispatch = useDispatch();
   return (
     <div className="contractor_overview--container">
@@ -38,11 +51,19 @@ const ContractorOverview = ({ contractorsAssignmentList }) => {
                 type="button"
                 onClick={() => {
                   dispatch(findContractorDetails(contractor.id));
+                  showListCardHandler(false);
                 }}
               >
                 Contractor Info
               </button>
-              <button className="btn infoBtn" type="button">
+              <button
+                className="btn infoBtn"
+                type="button"
+                onClick={() => {
+                  dispatch(findContractorDetails(contractor.id));
+                  showListCardHandler(true);
+                }}
+              >
                 Item details
               </button>
             </div>
@@ -53,7 +74,8 @@ const ContractorOverview = ({ contractorsAssignmentList }) => {
   );
 };
 
-const ContractorDetails = () => {
+// ! This is the details card on the right side
+const ContractorDetails = ({ showItemsList }) => {
   const dispatch = useDispatch();
   const contractorsDetails = useSelector(
     (state) => state.contractors.contractorDetails
@@ -62,48 +84,99 @@ const ContractorDetails = () => {
   return (
     <div className="contractor_details--container">
       <div className="wrapper">
+        {/* This is the profile photo section */}
         <div className="profile_info">
           <div className="profile_photo">
             <img src="./images/avataaars.png" alt="" />
           </div>
-          <div className="profile_details">
-            <div className="section-left">
-              <div>
-                <span className="profile_lable">Name: </span>
-                <span>{contractorsDetails.name}</span>
+          {!showItemsList ? (
+            <div className="profile_details">
+              <div className="section-left">
+                <div>
+                  <span className="profile_lable">Name: </span>
+                  <span>{contractorsDetails.name}</span>
+                </div>
+                <div>
+                  <span className="profile_lable">ReferedBy: </span>
+                  <span>{contractorsDetails.referedBy}</span>
+                </div>
+                <div>
+                  <span className="profile_lable">Address: </span>
+                  <span>{contractorsDetails.address}</span>
+                </div>
+                <div>
+                  <span className="profile_lable">Message: </span>
+                  <div>{contractorsDetails.message}</div>
+                </div>
               </div>
-              <div>
-                <span className="profile_lable">ReferedBy: </span>
-                <span>{contractorsDetails.referedBy}</span>
-              </div>
-              <div>
-                <span className="profile_lable">Address: </span>
-                <span>{contractorsDetails.address}</span>
-              </div>
-              <div>
-                <span className="profile_lable">Message: </span>
-                <div>{contractorsDetails.message}</div>
+              <div className="section-right">
+                <div>
+                  <span className="profile_lable">Phone: </span>
+                  <span>{contractorsDetails.phone}</span>
+                </div>
+                <div>
+                  <button
+                    className="profile_del--btn"
+                    type="button"
+                    onClick={() => {
+                      dispatch(deleteContractor(contractorsDetails.id));
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="section-right">
-              <div>
-                <span className="profile_lable">Phone: </span>
-                <span>{contractorsDetails.phone}</span>
-              </div>
-              <div>
-                <button
-                  className="profile_del--btn"
-                  type="button"
-                  onClick={() => {
-                    dispatch(deleteContractor(contractorsDetails.id));
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
+          ) : (
+            <ItemDetail itemDetails={contractorsDetails.itemsInCart} />
+          )}
         </div>
+      </div>
+    </div>
+  );
+};
+
+// ! This is the list of items in contractors name.
+
+const ItemDetail = ({ itemDetails }) => {
+  // This {ItemDeatils is an array of obj [{}]}
+  return (
+    <div className="item_details_container">
+      <div className="contractors-name-phone">
+        <div>
+          <span className="profile_lable" style={{ fontWeight: 600 }}>
+            Name:
+          </span>
+          <span> Arman Bhatia</span>
+        </div>
+        <div>
+          <span className="profile_lable" style={{ fontWeight: 600 }}>
+            Phone:
+          </span>
+          <span> 514-448-5939</span>
+        </div>
+      </div>
+      <div className="Items_container">
+        {itemDetails.map((item) => {
+          return (
+            <div className="item">
+              <div className="date">23/08/23</div>
+              <div>
+                {item.name} X {item.qty}
+              </div>
+              <input
+                type="number"
+                steps="1"
+                max={item.qty}
+                name=""
+                placeholder="enter the products you recieved"
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div className="actionBtn-received">
+        <button type="submit">Submit</button>
       </div>
     </div>
   );

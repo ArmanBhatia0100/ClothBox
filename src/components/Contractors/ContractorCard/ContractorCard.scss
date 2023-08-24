@@ -3,6 +3,8 @@
   flex-direction: row;
   box-sizing: border-box;
   min-height: 84vh;
+
+  // ? This is the overView Card
   .contractor_overview--container {
     min-width: 50%;
     padding: 0.5rem;
@@ -25,13 +27,15 @@
       }
     }
   }
+
+  // ? This is the details card
   .contractor_details--container {
     .wrapper {
       position: sticky;
       top: 1rem;
       margin-top: 1rem;
       background-color: rgb(255, 250, 244);
-      width: 500px;
+      width: 32rem;
       .profile_info {
         display: flex;
         flex-direction: column;
@@ -74,6 +78,44 @@
             }
           }
         }
+      }
+    }
+  }
+
+  //? This is the contractor's items list details
+
+  .item_details_container {
+    width: 30rem;
+    .contractors-name-phone {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      div {
+        margin: 1rem;
+      }
+    }
+    .Items_container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      .item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: rgb(218, 203, 188);
+        padding: 1rem;
+        border-radius: 5px;
+        margin: 1rem 0;
+        input {
+          min-width: 2rem;
+          max-width: 3rem;
+        }
+      }
+    }
+    .actionBtn-received {
+      margin: 1rem 0;
+      button {
+        cursor: pointer;
       }
     }
   }
