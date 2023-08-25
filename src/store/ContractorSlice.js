@@ -15,17 +15,17 @@ const contractorSlice = createSlice({
           {
             name: "Item0",
             price: 50,
-            qty: "4",
+            qty: 4,
           },
           {
             name: "Item1",
             price: 50,
-            qty: "5",
+            qty: 5,
           },
           {
             name: "Item0",
             price: 50,
-            qty: "4",
+            qty: 6,
           },
         ],
       },
@@ -109,7 +109,21 @@ const contractorSlice = createSlice({
         contractorIndex
       ].itemsInCart.findIndex((item) => item.name == action.payload.name);
 
-      state.assignItems[contractorIndex].itemsInCart.splice(itemIndex, 1);
+      //  !Reducing the items from the list
+      if (itemIndex >= 0) {
+        if (state.assignItems[contractorIndex].itemsInCart[itemIndex].qty > 0) {
+          state.assignItems[contractorIndex].itemsInCart[itemIndex].qty -=
+            action.payload.qty;
+          state.contractorDetails.itemsInCart[itemIndex].qty -=
+            action.payload.qty;
+        }
+        if (
+          state.assignItems[contractorIndex].itemsInCart[itemIndex].qty == 0
+        ) {
+          state.assignItems[contractorIndex].itemsInCart.splice(itemIndex, 1);
+          state.contractorDetails.itemsInCart.splice(itemIndex, 1);
+        }
+      }
     },
   },
 });
