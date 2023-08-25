@@ -191,6 +191,7 @@ const ItemDetail = ({ itemDetails }) => {
               itemReceived({
                 contractorid: contractorsDetails.id,
                 name: "Item0",
+                qty: 1,
               })
             );
           }}
