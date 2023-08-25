@@ -100,6 +100,17 @@ const contractorSlice = createSlice({
       );
       state.contractorDetails = { ...foundContractor };
     },
+    itemReceived(state, action) {
+      const contractorIndex = state.assignItems.findIndex(
+        (contractor) => contractor.id == action.payload.contractorid
+      );
+
+      const itemIndex = state.assignItems[
+        contractorIndex
+      ].itemsInCart.findIndex((item) => item.name == action.payload.name);
+
+      state.assignItems[contractorIndex].itemsInCart.splice(itemIndex, 1);
+    },
   },
 });
 
@@ -108,5 +119,6 @@ export const {
   addContractor,
   findContractorDetails,
   deleteContractor,
+  itemReceived,
 } = contractorSlice.actions;
 export default contractorSlice.reducer;

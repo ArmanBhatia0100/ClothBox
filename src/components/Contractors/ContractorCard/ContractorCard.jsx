@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   findContractorDetails,
   deleteContractor,
+  itemReceived,
 } from "../../../store/ContractorSlice";
 import "./ContractorCard.scss";
 import { useState } from "react";
@@ -139,6 +140,11 @@ const ContractorDetails = ({ showItemsList }) => {
 // ! This is the list of items in contractors name.
 
 const ItemDetail = ({ itemDetails }) => {
+  const dispatch = useDispatch();
+  const contractorsDetails = useSelector(
+    (state) => state.contractors.contractorDetails
+  );
+
   // This {ItemDeatils is an array of obj [{}]}
   return (
     <div className="item_details_container">
@@ -157,6 +163,7 @@ const ItemDetail = ({ itemDetails }) => {
         </div>
       </div>
       <div className="Items_container">
+        {/* This is the item */}
         {itemDetails.map((item) => {
           return (
             <div className="item">
@@ -168,6 +175,7 @@ const ItemDetail = ({ itemDetails }) => {
                 type="number"
                 steps="1"
                 max={item.qty}
+                min="0"
                 name=""
                 placeholder="enter the products you recieved"
               />
@@ -176,7 +184,19 @@ const ItemDetail = ({ itemDetails }) => {
         })}
       </div>
       <div className="actionBtn-received">
-        <button type="submit">Submit</button>
+        <button
+          type="button"
+          onClick={() => {
+            dispatch(
+              itemReceived({
+                contractorid: contractorsDetails.id,
+                name: "Item0",
+              })
+            );
+          }}
+        >
+          Submit
+        </button>
       </div>
     </div>
   );
