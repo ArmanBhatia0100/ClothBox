@@ -88,16 +88,19 @@ const ItemDetail = ({ itemDetails }) => {
         </div>
       </div>
       <div className="Items_container">
-        {/* This is the item */}
-        {itemDetails.map((item, index) => {
-          return (
-            <AssignItem
-              key={index}
-              item={item}
-              contractorsDetails={contractorsDetails}
-            />
-          );
-        })}
+        {contractorsDetails.itemsInCart.length != 0 ? (
+          itemDetails.map((item, index) => {
+            return (
+              <AssignItem
+                key={index}
+                item={item}
+                contractorsDetails={contractorsDetails}
+              />
+            );
+          })
+        ) : (
+          <h1 style={{ margin: "2rem", fontWeight: 600 }}>No Items Assigned</h1>
+        )}
       </div>
     </div>
   );
