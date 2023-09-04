@@ -5,6 +5,8 @@ import { useState } from "react";
 import "./Contractor.scss";
 import { useSelector } from "react-redux";
 
+import { Button } from "@mui/joy";
+
 //
 export default function Contractor() {
   const [addContractor, setAddContractor] = useState(false);
@@ -16,13 +18,14 @@ export default function Contractor() {
 
       {/* Add Contractor button */}
       <div className="contractor_subMenu">
-        <button
-          className="addContractorBtn"
+        <Button
+          variant="soft"
+          color="danger"
           type="button"
           onClick={() => setAddContractor(() => !addContractor)}
         >
           Add Contractor
-        </button>
+        </Button>
       </div>
 
       {/* Contractor Banner */}

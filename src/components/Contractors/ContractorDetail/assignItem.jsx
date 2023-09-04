@@ -1,19 +1,25 @@
 import { useDispatch } from "react-redux";
 import { itemReceived } from "../../../store/ContractorSlice";
 import { useRef } from "react";
+import { Button } from "@mui/material";
 
 const AssignItem = ({ item, contractorsDetails }) => {
   const dispatch = useDispatch();
   const itemReceivedRef = useRef(null);
-  console.log(itemReceivedRef);
+
   return (
     <div className="item">
       <div className="date">23/08/23</div>
-      <div>
-        {item.name} X {item.qty}
-      </div>
-      <input type="number" ref={itemReceivedRef} max={item.qty} />
-      <button
+      <div>{item.name}</div>
+      <div>x{item.qty}</div>
+      <input
+        type="number"
+        ref={itemReceivedRef}
+        max={item.qty}
+        placeholder="received"
+      />
+      <Button
+        color="success"
         type="button"
         onClick={() => {
           if (itemReceivedRef.current.value <= item.qty) {
@@ -32,7 +38,7 @@ const AssignItem = ({ item, contractorsDetails }) => {
         }}
       >
         Submit
-      </button>
+      </Button>
     </div>
   );
 };

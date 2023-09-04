@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { itemReceived } from "../../../store/ContractorSlice";
 import { useRef } from "react";
 import AssignItem from "./assignItem";
+import { Card, Button } from "@mui/joy";
 
 const ContractorDetails = ({ showItemsList }) => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const ContractorDetails = ({ showItemsList }) => {
 
   return (
     <div className="contractor_details--container">
-      <div className="wrapper">
+      <Card raised={true} className="wrapper">
         {/* This is the profile photo section */}
         <div className="profile_info">
           <div className="profile_photo">
@@ -43,15 +44,20 @@ const ContractorDetails = ({ showItemsList }) => {
                   <span>{contractorsDetails.phone}</span>
                 </div>
                 <div>
-                  <button
-                    className="profile_del--btn"
+                  <Button
+                    variant="solid"
+                    color="danger"
+                    size="md"
+                    sx={{
+                      margin: "1rem",
+                    }}
                     type="button"
                     onClick={() => {
                       dispatch(deleteContractor(contractorsDetails.id));
                     }}
                   >
                     Delete
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -59,7 +65,7 @@ const ContractorDetails = ({ showItemsList }) => {
             <ItemDetail itemDetails={contractorsDetails.itemsInCart} />
           )}
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

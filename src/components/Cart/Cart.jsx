@@ -25,7 +25,9 @@ export default function Cart() {
   return (
     <React.Fragment>
       <Header />
-      <Typography level="h2">Items in cart</Typography>
+      <Typography level="h2" m="2rem">
+        Cart Items
+      </Typography>
       <div>
         <Grid container spacing={0}>
           <Grid item lg={9}>
@@ -45,7 +47,7 @@ export default function Cart() {
           <Grid item lg={2}>
             <Card>
               <div>
-                <h3>Search for the contrators</h3>
+                <h3>Search Contractors</h3>
                 <Input type="search" size="small" />
               </div>
               {contractorsList.map(function (contractor, index) {

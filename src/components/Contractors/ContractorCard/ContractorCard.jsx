@@ -8,6 +8,8 @@ import {
 import "./ContractorCard.scss";
 import { useState } from "react";
 
+import { Button, Card } from "@mui/material";
+
 export default function ContractorCard({ contractorsList }) {
   const [showList, setShowList] = useState(false);
   const getTheshowlistHandler = (value) => {
@@ -36,7 +38,7 @@ const ContractorOverview = ({
     <div className="contractor_overview--container">
       {contractorsAssignmentList.map((contractor, index) => {
         return (
-          <div key={index} className="contractor_overview--card">
+          <Card raised={true} key={index} className="contractor_overview--card">
             <div className="contractorInfo" style={{ textAlign: "left" }}>
               <h1>
                 <span style={{ fontWeight: 600 }}>Name:</span>
@@ -48,8 +50,12 @@ const ContractorOverview = ({
               </h3>
             </div>
             <div className="contratorActionBtnContainer">
-              <button
-                className="btn itemDetailsBtn"
+              <Button
+                variant="contained"
+                size="small"
+                sx={{
+                  margin: "0.3rem",
+                }}
                 type="button"
                 onClick={() => {
                   dispatch(findContractorDetails(contractor.id));
@@ -57,19 +63,23 @@ const ContractorOverview = ({
                 }}
               >
                 Contractor Info
-              </button>
-              <button
-                className="btn infoBtn"
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
                 type="button"
+                sx={{
+                  margin: "0.3rem",
+                }}
                 onClick={() => {
                   dispatch(findContractorDetails(contractor.id));
                   showListCardHandler(true);
                 }}
               >
                 Item details
-              </button>
+              </Button>
             </div>
-          </div>
+          </Card>
         );
       })}
     </div>
