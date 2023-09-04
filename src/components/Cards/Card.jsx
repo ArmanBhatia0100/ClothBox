@@ -1,98 +1,64 @@
-import "./Card.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { addTocart, removeFromCart } from "../../store/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Card({ id, name, price, qty }) {
+import AspectRatio from "@mui/joy/AspectRatio";
+import { Card as MuiCard, Input } from "@mui/joy";
+import CardContent from "@mui/joy/CardContent";
+import CardOverflow from "@mui/joy/CardOverflow";
+import Divider from "@mui/joy/Divider";
+import Typography from "@mui/joy/Typography";
+import { Button } from "@mui/material";
+
+export default function Card({ id, name, price }) {
+  const [newQty, setNewQty] = useState("");
   const dispatch = useDispatch();
-  const qtyRef = useRef();
 
   return (
-    <div class="example-1 card">
-      <div class="wrapper">
-        <div class="data">
-          <div class="content">
-            <span class="author ItemName"> {name}</span>
-            <p class="text">Price : ${price}</p>
-            <label htmlFor="">Qty</label>
-            <input
-              className="cardText-qty"
-              ref={qtyRef}
-              type="number"
-              step="1"
-              min="0"
-              defaultValue={qty}
-            />
-            <button
-              className="addToCartBtn"
-              type="button"
-              onClick={() => {
-                dispatch(addTocart({ name, price, qty: qtyRef.current.value }));
-                qtyRef.current.value = 0;
-              }}
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    // <div className="card-container">
-    //   <img
-    //     className="cardImg"
-    //     src="https://dummyimage.com/100x100/000/fff&text=Image"
-    //     alt=""
-    //   />
-    //   <p className="cardtext">
-    //     <span className="cardText-title">Name: </span>
-    //     {name}
-    //   </p>
-    //   <p className="cardtext">
-    //     <span className="cardText-title">Price: </span>${price}
-    //   </p>
-    //   <div>
-    //     <label htmlFor="">Qty</label>
-    //     <input
-    //       className="cardText-qty"
-    //       ref={qtyRef}
-    //       type="number"
-    //       step="1"
-    //       min="0"
-    //       defaultValue={qty}
-    //     />
-    //     <button
-    //       className="addToCartBtn"
-    //       type="button"
-    //       onClick={() => {
-    //         dispatch(addTocart({ name, price, qty: qtyRef.current.value }));
-    //         qtyRef.current.value = 0;
-    //       }}
-    //     >
-    //       Add to Cart
-    //     </button>
-    //   </div>
-    // </div>
+    <MuiCard variant="outlined" sx={{ width: 320, margin: ".5rem" }}>
+      <CardOverflow>
+        <AspectRatio ratio="2">
+          <img
+            src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318"
+            srcSet="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x"
+            loading="lazy"
+            alt=""
+          />
+        </AspectRatio>
+      </CardOverflow>
+      <CardContent>
+        <Typography level="h6">{name}</Typography>
+        <Typography level="body-sm">${price}</Typography>
+      </CardContent>
+      <CardOverflow variant="soft" sx={{ bgcolor: "background.level1" }}>
+        <Divider inset="context" />
+        <CardContent orientation="horizontal">
+          <Input
+            type="number"
+            variant="standard"
+            inputProps={{ min: "10", steps: "2" }}
+            value={newQty}
+            onChange={(e) => {
+              setNewQty(() => e.target.value);
+            }}
+          ></Input>
+          <Divider orientation="vertical" />
+          <Button
+            type="button"
+            variant="contained"
+            onClick={() => {
+              if (newQty > 0) {
+                dispatch(addTocart({ id, name, price, qty: newQty }));
+              } else {
+                alert("Enter Positive value");
+              }
+              setNewQty(() => 0);
+            }}
+          >
+            Add
+          </Button>
+        </CardContent>
+      </CardOverflow>
+    </MuiCard>
   );
-}
-
-{
-  /* <div class="example-1 card">
-  <div class="wrapper">
-    <div class="date">
-      <span class="day">12</span>
-      <span class="month">Aug</span>
-      <span class="year">2016</span>
-    </div>
-    <div class="data">
-      <div class="content">
-        <span class="author ItemName"> {name}</span>
-        <h1 class="title">
-          <a href="#">Boxing icon has the will for a couple more fights</a>
-        </h1>
-        <p class="text">Price : ${price}</p>
-      </div>
-    </div>
-  </div>
-</div>; */
 }

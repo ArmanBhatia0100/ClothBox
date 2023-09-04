@@ -1,7 +1,11 @@
-import React, { useRef } from "react";
-import "./Auth.scss";
+import React, { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/AuthSlice";
+
+import "./Auth.scss";
+
+import { Input, Button, Stack } from "@mui/material";
+import { Card, Typography } from "@mui/joy";
 
 const owner = {
   name: "Arman",
@@ -10,16 +14,12 @@ const owner = {
 };
 
 export default function Auth() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  
-  const usernameRef = useRef();
-  const passwordRef = useRef();
 
   const loginHandler = (e) => {
     e.preventDefault();
-    const username = usernameRef.current.value;
-    const password = passwordRef.current.value;
-
     if (username === owner.name && password === owner.password) {
       dispatch(login());
       window.localStorage.setItem("loggedIn", true);
@@ -27,28 +27,49 @@ export default function Auth() {
       alert("email or password incorrect try again");
       window.localStorage.setItem("loggedIn", false);
     }
-    usernameRef.current.value = passwordRef.current.value = "";
+    setUsername("");
+    setPassword("");
   };
   return (
     <div className="authContainer">
-      <div className="authComponent_container">
-        <h1 className="title">Cloth Box</h1>
+      <Card variant="outlined" sx={{ minWidth: "400px", padding: "3rem 3rem" }}>
+        <Typography sx={{ color: "grey" }} level="h3" mb="1.5rem">
+          Cloth Box
+        </Typography>
         <form className="form_control" action="" onSubmit={loginHandler}>
-          <div className="actionControl_container">
-            <label htmlFor="">Username</label>
-            <input type="text" name="" id="" ref={usernameRef} />
-          </div>
-          <div className="actionControl_container">
-            <label htmlFor="">Password</label>
-            <input type="password" name="" id="" ref={passwordRef} />
-          </div>
-          <div className="actionControl_container">
-            <button className="actionControl_actionSubmit" type="submit">
+          <Stack spacing={2}>
+            <Input
+              type="text"
+              variant="soft"
+              placeholder="Username"
+              size="small"
+              onChange={(e) => {
+                setUsername(() => e.target.value);
+              }}
+            />
+            <Input
+              type="password"
+              variant="soft"
+              placeholder="Password"
+              size="small"
+              onChange={(e) => {
+                setPassword(() => e.target.value);
+              }}
+            />
+            <Button
+              sx={{ width: "100%" }}
+              variant="contained"
+              size="medium"
+              type="submit"
+            >
               Login
-            </button>
-          </div>
+            </Button>
+            <Typography level="h6">
+              username:"Arman" password:"admin@123"
+            </Typography>
+          </Stack>
         </form>
-      </div>
+      </Card>
     </div>
   );
 }

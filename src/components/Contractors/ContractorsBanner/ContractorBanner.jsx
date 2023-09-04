@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
 import "./ContractorsBanner.scss";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { addContractor } from "../../../store/ContractorSlice";
 import { useDispatch, useSelector } from "react-redux";
+
+import { Button, Container } from "@mui/material";
 
 export default function ContractsBanner() {
   // Used the ref to fecth the input data
@@ -39,7 +40,7 @@ export default function ContractsBanner() {
         "";
   };
   return (
-    <div class="contractorFormcontainer">
+    <Container maxWidth="sm">
       <form id="contact" onSubmit={addContractorHandler}>
         <h3>Add Contractor</h3>
         <fieldset>
@@ -82,11 +83,11 @@ export default function ContractsBanner() {
           ></textarea>
         </fieldset>
         <fieldset>
-          <button name="submit" type="submit" id="contact-submit">
+          <Button variant="contained" color="primary" type="submit">
             Submit
-          </button>
+          </Button>
         </fieldset>
       </form>
-    </div>
+    </Container>
   );
 }
