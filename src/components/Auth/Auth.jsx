@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Auth.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/AuthSlice";
+import { Input, Button } from "@mui/material";
 
 const owner = {
   name: "Arman",
@@ -10,16 +11,12 @@ const owner = {
 };
 
 export default function Auth() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  
-  const usernameRef = useRef();
-  const passwordRef = useRef();
 
   const loginHandler = (e) => {
     e.preventDefault();
-    const username = usernameRef.current.value;
-    const password = passwordRef.current.value;
-
     if (username === owner.name && password === owner.password) {
       dispatch(login());
       window.localStorage.setItem("loggedIn", true);
@@ -27,7 +24,8 @@ export default function Auth() {
       alert("email or password incorrect try again");
       window.localStorage.setItem("loggedIn", false);
     }
-    usernameRef.current.value = passwordRef.current.value = "";
+    setUsername("");
+    setPassword("");
   };
   return (
     <div className="authContainer">
@@ -35,17 +33,31 @@ export default function Auth() {
         <h1 className="title">Cloth Box</h1>
         <form className="form_control" action="" onSubmit={loginHandler}>
           <div className="actionControl_container">
-            <label htmlFor="">Username</label>
-            <input type="text" name="" id="" ref={usernameRef} />
+            <Input
+              type="text"
+              variant="soft"
+              placeholder="username"
+              size="small"
+              onChange={(e) => {
+                setUsername(() => e.target.value);
+              }}
+            />
           </div>
           <div className="actionControl_container">
-            <label htmlFor="">Password</label>
-            <input type="password" name="" id="" ref={passwordRef} />
+            <Input
+              type="password"
+              variant="soft"
+              placeholder="password"
+              size="small"
+              onChange={(e) => {
+                setPassword(() => e.target.value);
+              }}
+            />
           </div>
           <div className="actionControl_container">
-            <button className="actionControl_actionSubmit" type="submit">
+            <Button size="medium" type="submit">
               Login
-            </button>
+            </Button>
           </div>
         </form>
       </div>
