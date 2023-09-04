@@ -11,7 +11,7 @@ import Typography from "@mui/joy/Typography";
 import { Button } from "@mui/material";
 
 export default function Card({ id, name, price }) {
-  const [newQty, setNewQty] = useState(0);
+  const [newQty, setNewQty] = useState("");
   const dispatch = useDispatch();
 
   return (
@@ -36,9 +36,7 @@ export default function Card({ id, name, price }) {
           <Input
             type="number"
             variant="standard"
-            min="0"
-            step="1"
-            defaultValue={""}
+            inputProps={{ min: "10", steps: "2" }}
             value={newQty}
             onChange={(e) => {
               setNewQty(() => e.target.value);
@@ -49,7 +47,11 @@ export default function Card({ id, name, price }) {
             type="button"
             variant="contained"
             onClick={() => {
-              dispatch(addTocart({ id, name, price, qty: newQty }));
+              if (newQty > 0) {
+                dispatch(addTocart({ id, name, price, qty: newQty }));
+              } else {
+                alert("Enter Positive value");
+              }
               setNewQty(() => 0);
             }}
           >
