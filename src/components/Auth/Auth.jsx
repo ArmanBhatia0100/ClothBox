@@ -1,8 +1,11 @@
 import React, { useRef, useState } from "react";
-import "./Auth.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/AuthSlice";
-import { Input, Button } from "@mui/material";
+
+import "./Auth.scss";
+
+import { Input, Button, Stack } from "@mui/material";
+import { Card, Typography } from "@mui/joy";
 
 const owner = {
   name: "Arman",
@@ -29,38 +32,44 @@ export default function Auth() {
   };
   return (
     <div className="authContainer">
-      <div className="authComponent_container">
-        <h1 className="title">Cloth Box</h1>
+      <Card variant="outlined" sx={{ minWidth: "400px", padding: "3rem 3rem" }}>
+        <Typography sx={{ color: "grey" }} level="h3" mb="1.5rem">
+          Cloth Box
+        </Typography>
         <form className="form_control" action="" onSubmit={loginHandler}>
-          <div className="actionControl_container">
+          <Stack spacing={2}>
             <Input
               type="text"
               variant="soft"
-              placeholder="username"
+              placeholder="Username"
               size="small"
               onChange={(e) => {
                 setUsername(() => e.target.value);
               }}
             />
-          </div>
-          <div className="actionControl_container">
             <Input
               type="password"
               variant="soft"
-              placeholder="password"
+              placeholder="Password"
               size="small"
               onChange={(e) => {
                 setPassword(() => e.target.value);
               }}
             />
-          </div>
-          <div className="actionControl_container">
-            <Button size="medium" type="submit">
+            <Button
+              sx={{ width: "100%" }}
+              variant="contained"
+              size="medium"
+              type="submit"
+            >
               Login
             </Button>
-          </div>
+            <Typography level="h6">
+              username:"Arman" password:"admin@123"
+            </Typography>
+          </Stack>
         </form>
-      </div>
+      </Card>
     </div>
   );
 }

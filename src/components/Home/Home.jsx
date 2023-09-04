@@ -1,6 +1,8 @@
 import Header from "../Header/Header";
 import Card from "../Cards/Card";
 
+
+
 function Products(id, name, price, qty) {
   (this.id = id), (this.name = name), (this.price = price), (this.qty = qty);
 }
