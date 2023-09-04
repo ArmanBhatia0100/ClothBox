@@ -1,7 +1,7 @@
 import Header from "../Header/Header";
 import Card from "../Cards/Card";
 
-
+import { Container } from "@mui/material";
 
 function Products(id, name, price, qty) {
   (this.id = id), (this.name = name), (this.price = price), (this.qty = qty);
@@ -17,15 +17,14 @@ export default function Home() {
   return (
     <div className="homeComponent">
       <Header></Header>
-      <section
-        className="cardsContainer"
-        style={{
+      <Container
+        maxWidth="xl"
+        sx={{
           display: "flex",
+          justifyContent: "space-evenly",
           flexWrap: "wrap",
-          justifyContent: "flex-start",
         }}
       >
-        {" "}
         {productList.map((product) => {
           return (
             <Card
@@ -37,7 +36,7 @@ export default function Home() {
             />
           );
         })}
-      </section>
+      </Container>
     </div>
   );
 }
