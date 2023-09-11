@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ClothBox/static/css/main.0c44d935.css",
+    "main.js": "/ClothBox/static/js/main.8a908a5b.js",
+    "index.html": "/ClothBox/index.html",
+    "main.0c44d935.css.map": "/ClothBox/static/css/main.0c44d935.css.map",
+    "main.8a908a5b.js.map": "/ClothBox/static/js/main.8a908a5b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c44d935.css",
+    "static/js/main.8a908a5b.js"
+  ]
+}
